@@ -59,11 +59,12 @@
 					<div class="header-titles">
 
 						<?php
-							// Site title or logo.
+							// Site logo.
 							twentytwenty_site_logo();
 
-							// Site description.
-							twentytwenty_site_description();
+							// Site title (used to be description).
+							// twentytwenty_site_description();
+							twentytwenty_site_title();
 						?>
 
 					</div><!-- .header-titles -->

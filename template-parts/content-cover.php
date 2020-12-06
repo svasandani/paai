@@ -76,7 +76,13 @@
 								<?php
 							}
 
-							the_title( '<h1 class="entry-title">', '</h1>' );
+								?>
+							
+							<h1 class="entry-title"><?php bloginfo( 'description' ); ?></h1>
+
+								<?php
+
+							// the_title( '<h1 class="entry-title">', '</h1>' );
 
 							if ( is_page() ) {
 								?>
