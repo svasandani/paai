@@ -137,7 +137,7 @@ body {
 @supports ( font-variation-settings: normal ) {
 
 	body {
-		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+		font-family: "Space Grotesk var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	}
 }
 
@@ -273,6 +273,46 @@ Inter variable font. Usage:
 	src: url(./assets/fonts/inter/Inter-italic-var.woff2) format("woff2");
 }
 
+/* ----------------------------------------------
+Work Sans variable font. Usage:
+
+@supports (font-variation-settings: normal) {
+	html { font-family: 'Work Sans var', sans-serif; }
+}
+---------------------------------------------- */
+
+@font-face {
+	font-family: "Work Sans var";
+	font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
+	font-style: normal;
+	font-display: swap;
+	src: url(./assets/fonts/worksans/WorkSans-upright-var.ttf) format("woff2");
+}
+
+@font-face {
+	font-family: "Work Sans var";
+	font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
+	font-style: italic;
+	font-display: swap;
+	src: url(./assets/fonts/worksans/WorkSans-upright-var.ttf) format("woff2");
+}
+
+/* ----------------------------------------------
+Space Grotesk variable font. Usage:
+
+@supports (font-variation-settings: normal) {
+	html { font-family: 'Space Grotesk var', sans-serif; }
+}
+---------------------------------------------- */
+
+@font-face {
+	font-family: "Space Grotesk var";
+	font-weight: 100 900; /* stylelint-disable-line font-weight-notation */
+	font-style: normal;
+	font-display: swap;
+	src: url(./assets/fonts/spacegrotesk/SpaceGrotesk-upright-var.ttf) format("woff2");
+}
+
 
 /* Accessibility Settings -------------------- */
 
@@ -313,7 +353,7 @@ h6,
 h1,
 .heading-size-1 {
 	font-size: 3.6rem;
-	font-weight: 800;
+	font-weight: 900;
 	line-height: 1.138888889;
 }
 
@@ -746,7 +786,7 @@ button,
 	.faux-button.more-link,
 	.wp-block-button__link,
 	.wp-block-file__button {
-		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+		font-family: "Space Grotesk var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	}
 }
 
@@ -2808,7 +2848,7 @@ h2.entry-title {
 	color: #cd2653;
 	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	font-size: 5.1em;
-	font-weight: 800;
+	font-weight: 900;
 	margin: 0.05em 0.1em 0 0;
 }
 
@@ -2846,7 +2886,7 @@ h2.entry-title {
 	.entry-content .wp-block-latest-comments,
 	.entry-content .wp-block-cover-image p,
 	.entry-content .wp-block-pullquote {
-		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+		font-family: "Space Grotesk var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	}
 }
 
@@ -3538,7 +3578,7 @@ figure.wp-block-table.is-style-stripes {
 /* Font Families ----------------------------- */
 
 .entry-content {
-	font-family: NonBreakingSpaceOverride, "Hoefler Text", Garamond, "Times New Roman", serif;
+	font-family: "Work Sans var", Garamond, "Times New Roman", serif;
 	letter-spacing: normal;
 }
 
@@ -3571,7 +3611,7 @@ figure.wp-block-table.is-style-stripes {
 	.entry-content address,
 	.entry-content .wp-caption-text,
 	.entry-content .wp-block-file {
-		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+		font-family: "Space Grotesk var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	}
 }
 
@@ -4145,7 +4185,7 @@ div.comment:first-of-type {
 .widget_text dl,
 .widget_text dt,
 .widget-content .rssSummary {
-	font-family: NonBreakingSpaceOverride, "Hoefler Text", Garamond, "Times New Roman", serif;
+	font-family: "Work Sans var", Garamond, "Times New Roman", serif;
 	letter-spacing: normal;
 }
 
@@ -4160,7 +4200,7 @@ div.comment:first-of-type {
 	.widget-content cite,
 	.widget-content figcaption,
 	.widget-content .wp-caption-text {
-		font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+		font-family: "Space Grotesk var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	}
 }
 
