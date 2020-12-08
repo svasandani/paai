@@ -12,7 +12,7 @@
 }
 
 .editor-styles-wrapper > * {
-	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: "Work Sans var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 	font-size: 18px;
 }
 
@@ -170,7 +170,7 @@ Space Grotesk variable font. Usage:
 .editor-styles-wrapper cite,
 .editor-styles-wrapper figcaption,
 .editor-styles-wrapper .wp-caption-text {
-	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+	font-family: "Work Sans var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 @supports ( font-variation-settings: normal ) {
