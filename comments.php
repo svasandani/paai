@@ -1,132 +1,99 @@
 <?php
 /**
- * The template file for displaying the comments and comment form for the
- * PAAI theme.
+ * The template for displaying comments.
  *
- * @package WordPress
- * @subpackage PAAI
- * @since PAAI 1.0
+ * This is the template that displays the area of the page that contains both the current comments
+ * and the comment form.
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package Astra
+ * @since 1.0.0
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 /*
  * If the current post is protected by a password and
  * the visitor has not yet entered the password we will
  * return early without loading the comments.
-*/
+ */
 if ( post_password_required() ) {
 	return;
 }
+?>
 
-if ( $comments ) {
-	?>
+<div id="comments" class="comments-area">
 
-	<div class="comments" id="comments">
+	<?php astra_comments_before(); ?>
 
-		<?php
-		$comments_number = absint( get_comments_number() );
-		?>
-
-		<div class="comments-header section-inner small max-percentage">
-
-			<h2 class="comment-reply-title">
-			<?php
-			if ( ! have_comments() ) {
-				_e( 'Leave a comment', 'paai' );
-			} elseif ( 1 === $comments_number ) {
-				/* translators: %s: Post title. */
-				printf( _x( 'One reply on &ldquo;%s&rdquo;', 'comments title', 'paai' ), get_the_title() );
-			} else {
-				printf(
-					/* translators: 1: Number of comments, 2: Post title. */
-					_nx(
-						'%1$s reply on &ldquo;%2$s&rdquo;',
-						'%1$s replies on &ldquo;%2$s&rdquo;',
-						$comments_number,
-						'comments title',
-						'paai'
-					),
-					number_format_i18n( $comments_number ),
-					get_the_title()
+	<?php if ( have_comments() ) : ?>
+		<div class="comments-count-wrapper">
+			<h3 class="comments-title">
+				<?php
+				$comments_title = apply_filters(
+					'astra_comment_form_title',
+					sprintf( // WPCS: XSS OK.
+						/* translators: 1: number of comments */
+						esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'astra' ) ),
+						number_format_i18n( get_comments_number() ),
+						get_the_title()
+					)
 				);
-			}
 
-			?>
-			</h2><!-- .comments-title -->
+				echo esc_html( $comments_title );
+				?>
+			</h3>
+		</div>
 
-		</div><!-- .comments-header -->
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
+		<nav id="comment-nav-above" class="navigation comment-navigation" aria-label="<?php esc_attr_e( 'Comments Navigation', 'astra' ); ?>">
+			<h3 class="screen-reader-text"><?php echo esc_html( astra_default_strings( 'string-comment-navigation-next', false ) ); ?></h3>
+			<div class="nav-links">
 
-		<div class="comments-inner section-inner thin max-percentage">
+				<div class="nav-previous"><?php previous_comments_link( astra_default_strings( 'string-comment-navigation-previous', false ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( astra_default_strings( 'string-comment-navigation-next', false ) ); ?></div>
 
+			</div><!-- .nav-links -->
+		</nav><!-- #comment-nav-above -->
+		<?php endif; ?>
+
+		<ol class="ast-comment-list">
 			<?php
 			wp_list_comments(
 				array(
-					'walker'      => new Paai_Walker_Comment(),
-					'avatar_size' => 120,
-					'style'       => 'div',
+					'callback' => 'astra_theme_comment',
+					'style'    => 'ol',
 				)
 			);
-
-			$comment_pagination = paginate_comments_links(
-				array(
-					'echo'      => false,
-					'end_size'  => 0,
-					'mid_size'  => 0,
-					'next_text' => __( 'Newer Comments', 'paai' ) . ' <span aria-hidden="true">&rarr;</span>',
-					'prev_text' => '<span aria-hidden="true">&larr;</span> ' . __( 'Older Comments', 'paai' ),
-				)
-			);
-
-			if ( $comment_pagination ) {
-				$pagination_classes = '';
-
-				// If we're only showing the "Next" link, add a class indicating so.
-				if ( false === strpos( $comment_pagination, 'prev page-numbers' ) ) {
-					$pagination_classes = ' only-next';
-				}
-				?>
-
-				<nav class="comments-pagination pagination<?php echo $pagination_classes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static output ?>" aria-label="<?php esc_attr_e( 'Comments', 'paai' ); ?>">
-					<?php echo wp_kses_post( $comment_pagination ); ?>
-				</nav>
-
-				<?php
-			}
 			?>
+		</ol><!-- .ast-comment-list -->
 
-		</div><!-- .comments-inner -->
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
+		<nav id="comment-nav-below" class="navigation comment-navigation" aria-label="<?php esc_attr_e( 'Comments Navigation', 'astra' ); ?>">
+			<h3 class="screen-reader-text"><?php echo esc_html( astra_default_strings( 'string-comment-navigation-next', false ) ); ?></h3>
+			<div class="nav-links">
 
-	</div><!-- comments -->
+				<div class="nav-previous"><?php previous_comments_link( astra_default_strings( 'string-comment-navigation-previous', false ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( astra_default_strings( 'string-comment-navigation-next', false ) ); ?></div>
 
-	<?php
-}
+			</div><!-- .nav-links -->
+		</nav><!-- #comment-nav-below -->
+		<?php endif; ?>
 
-if ( comments_open() || pings_open() ) {
-
-	if ( $comments ) {
-		echo '<hr class="styled-separator is-style-wide" aria-hidden="true" />';
-	}
-
-	comment_form(
-		array(
-			'class_form'         => 'section-inner thin max-percentage',
-			'title_reply_before' => '<h2 id="reply-title" class="comment-reply-title">',
-			'title_reply_after'  => '</h2>',
-		)
-	);
-
-} elseif ( is_single() ) {
-
-	if ( $comments ) {
-		echo '<hr class="styled-separator is-style-wide" aria-hidden="true" />';
-	}
-
-	?>
-
-	<div class="comment-respond" id="respond">
-
-		<p class="comments-closed"><?php _e( 'Comments are closed.', 'paai' ); ?></p>
-
-	</div><!-- #respond -->
+	<?php endif; ?>
 
 	<?php
-}
+		// If comments are closed and there are comments, let's leave a little note, shall we?
+	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
+		?>
+		<p class="no-comments"><?php echo esc_html( astra_default_strings( 'string-comment-closed', false ) ); ?></p>
+	<?php endif; ?>
+
+	<?php comment_form(); ?>
+
+	<?php astra_comments_after(); ?>
+
+</div><!-- #comments -->

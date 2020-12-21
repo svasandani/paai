@@ -1,55 +1,39 @@
 <?php
 /**
- * The template for displaying the footer
+ * The template for displaying the footer.
  *
- * Contains the opening of the #site-footer div and all content after.
+ * Contains the closing of the #content div and all content after.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package WordPress
- * @subpackage PAAI
- * @since PAAI 0.0.1
+ * @package Astra
+ * @since 1.0.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 ?>
-			<footer id="site-footer" role="contentinfo" class="header-footer-group">
+			<?php astra_content_bottom(); ?>
 
-				<div class="section-inner">
+			</div> <!-- ast-container -->
 
-					<div class="footer-credits">
+		</div><!-- #content -->
 
-						<p class="footer-copyright">&copy;
-							<?php
-							echo date_i18n(
-								/* translators: Copyright date format, see https://www.php.net/date */
-								_x( 'Y', 'copyright date format', 'paai' )
-							);
-							?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-						</p><!-- .footer-copyright -->
+		<?php astra_content_after(); ?>
 
-					</div><!-- .footer-credits -->
+		<?php astra_footer_before(); ?>
 
-					<a class="to-the-top" href="#site-header">
-						<span class="to-the-top-long">
-							<?php
-							/* translators: %s: HTML character for up arrow. */
-							printf( __( 'To the top %s', 'paai' ), '<span class="arrow" aria-hidden="true">&uarr;</span>' );
-							?>
-						</span><!-- .to-the-top-long -->
-						<span class="to-the-top-short">
-							<?php
-							/* translators: %s: HTML character for up arrow. */
-							printf( __( 'Up %s', 'paai' ), '<span class="arrow" aria-hidden="true">&uarr;</span>' );
-							?>
-						</span><!-- .to-the-top-short -->
-					</a><!-- .to-the-top -->
+		<?php astra_footer(); ?>
 
-				</div><!-- .section-inner -->
+		<?php astra_footer_after(); ?>
 
-			</footer><!-- #site-footer -->
+	</div><!-- #page -->
 
-		<?php wp_footer(); ?>
+	<?php astra_body_bottom(); ?>
+
+	<?php wp_footer(); ?>
 
 	</body>
 </html>

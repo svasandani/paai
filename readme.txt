@@ -1,118 +1,89 @@
-=== PAAI ===
-Contributors: the WordPress team
-Tested up to: 5.5
-Stable tag: 1.5
+=== Astra ===
+Contributors: brainstormforce
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags: custom-menu, custom-logo, entertainment, featured-images, full-width-template, one-column, two-columns, left-sidebar, e-commerce, right-sidebar, custom-colors, editor-style, featured-images, full-width-template, microformats, post-formats, rtl-language-support, theme-options, threaded-comments, translation-ready, blog
+Tested up to: 5.5.3
+Requires PHP: 5.3
+Stable tag: 2.6.1
 
-Default theme for 2020.
+Astra is fast, fully customizable & beautiful WordPress theme suitable for blog, personal portfolio, business website and WooCommerce storefront.
 
 == Description ==
 
-Our default theme for 2020 is designed to take full advantage of the
-flexibility of the block editor. Organizations and businesses have the
-ability to create dynamic landing pages with endless layouts using the
-group and column blocks. The centered content column and fine-tuned
-typography also makes it perfect for traditional blogs. Complete editor
-styles give you a good idea of what your content will look like, even
-before you publish. You can give your site a personal touch by changing
-the background colors and the accent color in the Customizer. The colors of
-all elements on your site are automatically calculated based on the colors
-you pick, ensuring a high, accessible color contrast for your visitors.
+Astra is fast, fully customizable & beautiful WordPress theme suitable for blog, personal portfolio, business website and WooCommerce storefront. It is very lightweight (less than 50KB on frontend) and offers unparalleled speed. Built with SEO in mind, Astra comes with Schema.org code integrated and is Native AMP ready so search engines will love your site.
 
-== Changelog ==
+It offers special features and templates so it works perfectly with all page builders like Elementor, Beaver Builder, Visual Composer, SiteOrigin, Divi, etc. Some of the other features: # WooCommerce Ready # Responsive # RTL & Translation Ready # Extendible with premium addons # Regularly updated # Designed, Developed, Maintained & Supported by Brainstorm Force.
 
-= 1.5 =
-* Released: August 11, 2020
+Looking for a perfect base theme? Look no further. Astra is fast, fully customizable and WooCommerce ready theme that you can use for building any kind of website!
 
-https://wordpress.org/support/article/twenty-twenty-changelog/#Version_1.5
+== Installation ==
 
-= 1.4 =
-* Released: June 10, 2020
+= From within WordPress =
+1. Visit "Appearance > Themes > Add New"
+2. Search for "Astra"
+3. Install and activate
 
-https://wordpress.org/support/article/twenty-twenty-changelog/#Version_1.4
+== License ==
 
-= 1.3 =
-* Released: May 14, 2020
+Astra WordPress Theme, Copyright 2020 WPAstra.
+Astra is distributed under the terms of the GNU GPL.
 
-https://wordpress.org/support/article/twenty-twenty-changelog/#Version_1.3
+Astra is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
 
-= 1.2 =
-* Released: March 31, 2020
+== Features ==
 
-https://wordpress.org/support/article/twenty-twenty-changelog/#Version_1.2
+= Appearance > Widgets =
+Astra has up to 4 widget area. 1 in your header, 1 for each sidebar and up to 2 in your footer.
 
-= 1.1 =
-* Released: December 12, 2019
+= Appearance > Customize =
+	- Site Identity: Hide your site title or tagline, and upload your own header.
+	- Layout: Change things like your container width, header layout, Header width, Custom menu item , sidebar layout and much more.
+	- Set footer layout there is a two footer layout layout 1 and layout 2. layout 1 is stack style and layout 2 is inline.
+	- Blog: Show the full post or excerpt, also show and hide blog post meta & adjust blog post width to default or custom.
+	- Single post:Set single post meta and adjust width to custom or default.
+	- Colors & background: Choose your default background color, body color, theme color and link color.
+	- Typography: Choose your default body font & set default font size to H1 to H6 tags, Site title, tagline & blog post title on archive page and single page.
 
-https://wordpress.org/support/article/twenty-twenty-changelog/#Version_1.1
+= ASTRA Child Theme =
 
-= 1.0 =
-* Released: November 12, 2019
+There are multiple ways you can use a child theme with the Astra Theme, Use any one method mentoned below to create a child theme or use a child theme we have created.
 
-Initial release
+1. Download the child theme from Github - https://github.com/brainstormforce/astra-child/releases/latest/
+2. More information on creating child theme. - https://developer.wordpress.org/themes/advanced-topics/child-themes/
 
-== Copyright ==
 
-PAAI WordPress Theme, Copyright 2019-2020 WordPress.org
-PAAI is distributed under the terms of the GNU GPL.
+= Screenshot Licenses =
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
+Screenshot images are all licensed under Creative Commons Zero (CC0) ( https://pxhere.com/en/license )
+https://pxhere.com/en/photo/100653
+https://pxhere.com/en/photo/759723
+https://pxhere.com/en/photo/1259448
+https://pxhere.com/en/photo/1456591
+https://pxhere.com/en/photo/1389199
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
 
-PAAI is derived from the Chaplin Theme, Copyright 2019 Anders Norén
-Chaplin Theme is distributed under the terms of the GNU GPL version 2.0
+= Normalizing styles =
 
-PAAI bundles the following third-party resources:
+Normalizing styles have been helped along thanks to the fine work of.
+Nicolas Gallagher and Jonathan Neal https://necolas.github.com/normalize.css/
 
-Illustrations by Tammie Lister
-License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/
+= Flexibility JS =
 
-Bespoke Icons Created For PAAI
-License: Creative Commons Zero (CC0), https://creativecommons.org/publicdomain/zero/1.0/
-List of bespoke icons:
-- Search icon
-- Menu icon
+Flexibility is a JavaScript polyfill for Flexbox By Jonathan Neal, 10up. (https://github.com/jonathantneal/flexibility)
+Licensed under MIT ( https://github.com/jonathantneal/flexibility/blob/master/LICENSE.md )
 
-Feather Icons
-Copyright (c) 2013-2017 Cole Bemis
-License: MIT License, https://opensource.org/licenses/MIT
-Source: https://feathericons.com
-Used for post meta icons, and the link icon in the social menu.
+= IcoMoon-Free =
 
-TikTok Icon
-License: GPLv2
-Source: Émilie Lebrun - @Emlebrun
-Used for TikTok social icon.
+Astra icon font is based on IcoMoon-Free vector icon by Keyamoon.
+IcoMoon-Free vector icon destributed under trems of CC BY 4.0 or GPL. (https://creativecommons.org/licenses/by/4.0/ or https://www.gnu.org/licenses/gpl.html)
+Source: https://keyamoon.com/
 
-Social Icons
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Source: WordPress Social Link Block (See wp-includes\blocks\social-link.php)
+= Breadcrumb Trail =
 
-Code from Twenty Nineteen
-Copyright (c) 2018-2020 WordPress.org
-License: GPLv2
-Source: https://wordpress.org/themes/twentynineteen/
-Included as part of the following classes and functions:
-- Paai_SVG_Icons
-- paai_the_theme_svg()
-- paai_get_theme_svg()
-- paai_nav_menu_social_icons()
-
-Code from Twenty Seventeen
-Copyright (c) 2016-2020 WordPress.org
-License: GPLv2
-Source: https://wordpress.org/themes/twentyseventeen/
-Included as part of the following classes and functions:
-- paai_unique_id()
+Astra default breadcrumb is based on Breadcrumb Trail by Justin Tadlock. (https://github.com/justintadlock/breadcrumb-trail)
+Breadcrumb Trail is distributed under the terms of the GNU GPL v2 or later.
 
 Underscores
-https://underscores.me/, (C) 2012-2019 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+https://underscores.me/, (C) 2012-2020 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)

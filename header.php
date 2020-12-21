@@ -1,188 +1,59 @@
 <?php
 /**
- * Header file for the PAAI WordPress default theme.
+ * The header for Astra Theme.
+ *
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package WordPress
- * @subpackage PAAI
- * @since PAAI 1.0
+ * @package Astra
+ * @since 1.0.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 ?><!DOCTYPE html>
+<?php astra_html_before(); ?>
+<html <?php language_attributes(); ?>>
+<head>
+<?php astra_head_top(); ?>
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="https://gmpg.org/xfn/11">
 
-<html class="no-js" <?php language_attributes(); ?>>
+<?php wp_head(); ?>
+<?php astra_head_bottom(); ?>
+</head>
 
-	<head>
+<body <?php astra_schema_body(); ?> <?php body_class(); ?>>
 
-		<meta charset="<?php bloginfo( 'charset' ); ?>">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<?php astra_body_top(); ?>
+<?php wp_body_open(); ?>
+<div 
+	<?php
+	echo astra_attr(
+		'site',
+		array(
+			'id'    => 'page',
+			'class' => 'hfeed site',
+		)
+	);
+	?>
+>
+	<a class="skip-link screen-reader-text" href="#content"><?php echo esc_html( astra_default_strings( 'string-header-skip-link', false ) ); ?></a>
 
-		<link rel="profile" href="https://gmpg.org/xfn/11">
+	<?php astra_header_before(); ?>
 
-		<?php wp_head(); ?>
+	<?php astra_header(); ?>
 
-	</head>
+	<?php astra_header_after(); ?>
 
-	<body <?php body_class(); ?>>
+	<?php astra_content_before(); ?>
 
-		<?php
-		wp_body_open();
-		?>
+	<div id="content" class="site-content">
 
-		<header id="site-header" class="header-footer-group" role="banner">
+		<div class="ast-container">
 
-			<div class="header-inner section-inner">
-
-				<div class="header-titles-wrapper">
-
-					<?php
-
-					// Check whether the header search is activated in the customizer.
-					$enable_header_search = get_theme_mod( 'enable_header_search', true );
-
-					if ( true === $enable_header_search ) {
-
-						?>
-
-						<button class="toggle search-toggle mobile-search-toggle" data-toggle-target=".search-modal" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-							<span class="toggle-inner">
-								<span class="toggle-icon">
-									<?php paai_the_theme_svg( 'search' ); ?>
-								</span>
-								<span class="toggle-text"><?php _e( 'Search', 'paai' ); ?></span>
-							</span>
-						</button><!-- .search-toggle -->
-
-					<?php } ?>
-
-					<div class="header-titles">
-
-						<?php
-							// Site logo.
-							paai_site_logo();
-
-							// Site title (used to be description).
-							// paai_site_description();
-							paai_site_title();
-						?>
-
-					</div><!-- .header-titles -->
-
-					<button class="toggle nav-toggle mobile-nav-toggle" data-toggle-target=".menu-modal"  data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
-						<span class="toggle-inner">
-							<span class="toggle-icon">
-								<?php paai_the_theme_svg( 'ellipsis' ); ?>
-							</span>
-							<span class="toggle-text"><?php _e( 'Menu', 'paai' ); ?></span>
-						</span>
-					</button><!-- .nav-toggle -->
-
-				</div><!-- .header-titles-wrapper -->
-
-				<div class="header-navigation-wrapper">
-
-					<?php
-					if ( has_nav_menu( 'primary' ) || ! has_nav_menu( 'expanded' ) ) {
-						?>
-
-							<nav class="primary-menu-wrapper" aria-label="<?php esc_attr_e( 'Horizontal', 'paai' ); ?>" role="navigation">
-
-								<ul class="primary-menu reset-list-style">
-
-								<?php
-								if ( has_nav_menu( 'primary' ) ) {
-
-									wp_nav_menu(
-										array(
-											'container'  => '',
-											'items_wrap' => '%3$s',
-											'theme_location' => 'primary',
-										)
-									);
-
-								} elseif ( ! has_nav_menu( 'expanded' ) ) {
-
-									wp_list_pages(
-										array(
-											'match_menu_classes' => true,
-											'show_sub_menu_icons' => true,
-											'title_li' => false,
-											'walker'   => new Paai_Walker_Page(),
-										)
-									);
-
-								}
-								?>
-
-								</ul>
-
-							</nav><!-- .primary-menu-wrapper -->
-
-						<?php
-					}
-
-					if ( true === $enable_header_search || has_nav_menu( 'expanded' ) ) {
-						?>
-
-						<div class="header-toggles hide-no-js">
-
-						<?php
-						if ( has_nav_menu( 'expanded' ) ) {
-							?>
-
-							<div class="toggle-wrapper nav-toggle-wrapper has-expanded-menu">
-
-								<button class="toggle nav-toggle desktop-nav-toggle" data-toggle-target=".menu-modal" data-toggle-body-class="showing-menu-modal" aria-expanded="false" data-set-focus=".close-nav-toggle">
-									<span class="toggle-inner">
-										<span class="toggle-text"><?php _e( 'Menu', 'paai' ); ?></span>
-										<span class="toggle-icon">
-											<?php paai_the_theme_svg( 'ellipsis' ); ?>
-										</span>
-									</span>
-								</button><!-- .nav-toggle -->
-
-							</div><!-- .nav-toggle-wrapper -->
-
-							<?php
-						}
-
-						if ( true === $enable_header_search ) {
-							?>
-
-							<div class="toggle-wrapper search-toggle-wrapper">
-
-								<button class="toggle search-toggle desktop-search-toggle" data-toggle-target=".search-modal" data-toggle-body-class="showing-search-modal" data-set-focus=".search-modal .search-field" aria-expanded="false">
-									<span class="toggle-inner">
-										<?php paai_the_theme_svg( 'search' ); ?>
-										<span class="toggle-text"><?php _e( 'Search', 'paai' ); ?></span>
-									</span>
-								</button><!-- .search-toggle -->
-
-							</div>
-
-							<?php
-						}
-						?>
-
-						</div><!-- .header-toggles -->
-						<?php
-					}
-					?>
-
-				</div><!-- .header-navigation-wrapper -->
-
-			</div><!-- .header-inner -->
-
-			<?php
-			// Output the search modal (if it is activated in the customizer).
-			if ( true === $enable_header_search ) {
-				get_template_part( 'template-parts/modal-search' );
-			}
-			?>
-
-		</header><!-- #site-header -->
-
-		<?php
-		// Output the menu modal.
-		get_template_part( 'template-parts/modal-menu' );
+		<?php astra_content_top(); ?>

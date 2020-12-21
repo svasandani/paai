@@ -1,119 +1,46 @@
 <?php
 /**
- * The main template file
+ * The main template file.
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
  * It is used to display a page when nothing more specific matches a query.
  * E.g., it puts together the home page when no home.php file exists.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package WordPress
- * @subpackage PAAI
- * @since PAAI 1.0
+ * @package Astra
+ * @since 1.0.0
  */
 
-get_header();
-?>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
-<main id="site-content" role="main">
+get_header(); ?>
 
-	<?php
+<?php if ( astra_page_layout() == 'left-sidebar' ) : ?>
 
-	$archive_title    = '';
-	$archive_subtitle = '';
+	<?php get_sidebar(); ?>
 
-	if ( is_search() ) {
-		global $wp_query;
+<?php endif ?>
 
-		$archive_title = sprintf(
-			'%1$s %2$s',
-			'<span class="color-accent">' . __( 'Search:', 'paai' ) . '</span>',
-			'&ldquo;' . get_search_query() . '&rdquo;'
-		);
+	<div id="primary" <?php astra_primary_class(); ?>>
 
-		if ( $wp_query->found_posts ) {
-			$archive_subtitle = sprintf(
-				/* translators: %s: Number of search results. */
-				_n(
-					'We found %s result for your search.',
-					'We found %s results for your search.',
-					$wp_query->found_posts,
-					'paai'
-				),
-				number_format_i18n( $wp_query->found_posts )
-			);
-		} else {
-			$archive_subtitle = __( 'We could not find any results for your search. You can give it another try through the search form below.', 'paai' );
-		}
-	} elseif ( is_archive() && ! have_posts() ) {
-		$archive_title = __( 'Nothing Found', 'paai' );
-	} elseif ( ! is_home() ) {
-		$archive_title    = get_the_archive_title();
-		$archive_subtitle = get_the_archive_description();
-	}
+		<?php astra_primary_content_top(); ?>
 
-	if ( $archive_title || $archive_subtitle ) {
-		?>
+		<?php astra_content_loop(); ?>
 
-		<header class="archive-header has-text-align-center header-footer-group">
+		<?php astra_pagination(); ?>
 
-			<div class="archive-header-inner section-inner medium">
+		<?php astra_primary_content_bottom(); ?>
 
-				<?php if ( $archive_title ) { ?>
-					<h1 class="archive-title"><?php echo wp_kses_post( $archive_title ); ?></h1>
-				<?php } ?>
+	</div><!-- #primary -->
 
-				<?php if ( $archive_subtitle ) { ?>
-					<div class="archive-subtitle section-inner thin max-percentage intro-text"><?php echo wp_kses_post( wpautop( $archive_subtitle ) ); ?></div>
-				<?php } ?>
+<?php if ( astra_page_layout() == 'right-sidebar' ) : ?>
 
-			</div><!-- .archive-header-inner -->
+	<?php get_sidebar(); ?>
 
-		</header><!-- .archive-header -->
+<?php endif ?>
 
-		<?php
-	}
-
-	if ( have_posts() ) {
-
-		$i = 0;
-
-		while ( have_posts() ) {
-			$i++;
-			if ( $i > 1 ) {
-				echo '<hr class="post-separator styled-separator is-style-wide section-inner" aria-hidden="true" />';
-			}
-			the_post();
-
-			get_template_part( 'template-parts/content', get_post_type() );
-
-		}
-	} elseif ( is_search() ) {
-		?>
-
-		<div class="no-search-results-form section-inner thin">
-
-			<?php
-			get_search_form(
-				array(
-					'label' => __( 'search again', 'paai' ),
-				)
-			);
-			?>
-
-		</div><!-- .no-search-results -->
-
-		<?php
-	}
-	?>
-
-	<?php get_template_part( 'template-parts/pagination' ); ?>
-
-</main><!-- #site-content -->
-
-<?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
-
-<?php
-get_footer();
+<?php get_footer(); ?>

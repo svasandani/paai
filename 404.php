@@ -1,36 +1,39 @@
 <?php
 /**
- * The template for displaying the 404 template in the PAAI theme.
+ * The template for displaying 404 pages (not found).
  *
- * @package WordPress
- * @subpackage PAAI
- * @since PAAI 1.0
+ * @link https://codex.wordpress.org/Creating_an_Error_404_Page
+ *
+ * @package Astra
+ * @since 1.0.0
  */
 
-get_header();
-?>
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
-<main id="site-content" role="main">
+get_header(); ?>
 
-	<div class="section-inner thin error404-content">
+<?php if ( astra_page_layout() == 'left-sidebar' ) : ?>
 
-		<h1 class="entry-title"><?php _e( 'Page Not Found', 'paai' ); ?></h1>
+	<?php get_sidebar(); ?>
 
-		<div class="intro-text"><p><?php _e( 'The page you were looking for could not be found. It might have been removed, renamed, or did not exist in the first place.', 'paai' ); ?></p></div>
+<?php endif ?>
 
-		<?php
-		get_search_form(
-			array(
-				'label' => __( '404 not found', 'paai' ),
-			)
-		);
-		?>
+	<div id="primary" <?php astra_primary_class(); ?>>
 
-	</div><!-- .section-inner -->
+		<?php astra_primary_content_top(); ?>
 
-</main><!-- #site-content -->
+		<?php astra_404_content_template(); ?>		
 
-<?php get_template_part( 'template-parts/footer-menus-widgets' ); ?>
+		<?php astra_primary_content_bottom(); ?>
 
-<?php
-get_footer();
+	</div><!-- #primary -->
+
+<?php if ( astra_page_layout() == 'right-sidebar' ) : ?>
+
+	<?php get_sidebar(); ?>
+
+<?php endif ?>
+
+<?php get_footer(); ?>

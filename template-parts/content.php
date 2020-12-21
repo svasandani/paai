@@ -1,94 +1,99 @@
 <?php
 /**
- * The default template for displaying content
+ * Template part for displaying posts.
  *
- * Used for both singular and index.
+ * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package WordPress
- * @subpackage PAAI
- * @since PAAI 1.0
+ * @package Astra
+ * @since 1.0.0
  */
 
 ?>
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+<?php astra_entry_before(); ?>
 
+<article 
 	<?php
-
-	get_template_part( 'template-parts/entry-header' );
-
-	if ( ! is_search() ) {
-		get_template_part( 'template-parts/featured-image' );
-	}
-
-	?>
-
-	<div class="post-inner <?php echo is_page_template( 'templates/template-full-width.php' ) ? '' : 'thin'; ?> ">
-
-		<div class="entry-content">
-
-			<?php
-			if ( is_search() || ! is_singular() && 'summary' === get_theme_mod( 'blog_content', 'full' ) ) {
-				the_excerpt();
-			} else {
-				the_content( __( 'Continue reading', 'paai' ) );
-			}
-			?>
-
-		</div><!-- .entry-content -->
-
-	</div><!-- .post-inner -->
-
-	<div class="section-inner">
-		<?php
-		wp_link_pages(
+		echo astra_attr(
+			'article-content',
 			array(
-				'before'      => '<nav class="post-nav-links bg-light-background" aria-label="' . esc_attr__( 'Page', 'paai' ) . '"><span class="label">' . __( 'Pages:', 'paai' ) . '</span>',
-				'after'       => '</nav>',
-				'link_before' => '<span class="page-number">',
-				'link_after'  => '</span>',
+				'id'    => 'post-' . get_the_id(),
+				'class' => join( ' ', get_post_class() ),
 			)
 		);
-
-		edit_post_link();
-
-		// Single bottom post meta.
-		paai_the_post_meta( get_the_ID(), 'single-bottom' );
-
-		if ( post_type_supports( get_post_type( get_the_ID() ), 'author' ) && is_single() ) {
-
-			get_template_part( 'template-parts/entry-author-bio' );
-
-		}
 		?>
+>
+	<?php astra_entry_top(); ?>
 
-	</div><!-- .section-inner -->
-
-	<?php
-
-	if ( is_single() ) {
-
-		get_template_part( 'template-parts/navigation' );
-
-	}
-
-	/**
-	 *  Output comments wrapper if it's a post, or if comments are open,
-	 * or if there's a comment number – and check for password.
-	 * */
-	if ( ( is_single() || is_page() ) && ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
-		?>
-
-		<div class="comments-wrapper section-inner">
-
-			<?php comments_template(); ?>
-
-		</div><!-- .comments-wrapper -->
+	<header class="entry-header <?php astra_entry_header_class(); ?>">
 
 		<?php
-	}
-	?>
+		astra_the_title(
+			sprintf(
+				'<h2 class="entry-title" ' . astra_attr(
+					'article-title-content',
+					array(
+						'class' => '',
+					)
+				) . '><a href="%s" rel="bookmark">',
+				esc_url( get_permalink() )
+			),
+			'</a></h2>'
+		);
+		?>
 
-</article><!-- .post -->
+	</header><!-- .entry-header -->
+
+	<div class="entry-content clear"
+	<?php
+				echo astra_attr(
+					'article-entry-content',
+					array(
+						'class' => '',
+					)
+				);
+				?>
+	>
+
+		<?php astra_entry_content_before(); ?>
+
+		<?php
+			the_content(
+				sprintf(
+					wp_kses(
+						/* translators: %s: Name of current post. */
+						__( 'Continue reading %s', 'astra' ) . ' <span class="meta-nav">&rarr;</span>',
+						array(
+							'span' => array(
+								'class' => array(),
+							),
+						)
+					),
+					the_title( '<span class="screen-reader-text">"', '"</span>', false )
+				)
+			);
+			?>
+
+		<?php astra_entry_content_after(); ?>
+
+		<?php
+			wp_link_pages(
+				array(
+					'before'      => '<div class="page-links">' . esc_html( astra_default_strings( 'string-single-page-links-before', false ) ),
+					'after'       => '</div>',
+					'link_before' => '<span class="page-link">',
+					'link_after'  => '</span>',
+				)
+			);
+			?>
+	</div><!-- .entry-content .clear -->
+
+	<footer class="entry-footer">
+		<?php astra_entry_footer(); ?>
+	</footer><!-- .entry-footer -->
+
+	<?php astra_entry_bottom(); ?>
+
+</article><!-- #post-## -->
+
+<?php astra_entry_after(); ?>
